@@ -15,7 +15,16 @@
         "run_tags": {
           "ami-create": "{{user `ami_name`}}"
         },
-        "source_ami": "{{user `ami_base`}}",
+       "source_ami_filter": {
+        "filters": {
+        "virtualization-type": "hvm",
+        "architecture": "x86_64",
+        "name": "*ubuntu-xenial-16.04-amd64-server-*",
+        "block-device-mapping.volume-type": "gp2",
+        "root-device-type": "ebs"
+      },
+      "most_recent": true
+    },
         "ssh_username": "ubuntu",
         "subnet_id": "",
         "tags": {
